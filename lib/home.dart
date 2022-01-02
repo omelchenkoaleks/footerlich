@@ -8,6 +8,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+
+  static List<Widget> pages = <Widget>[
+    Container(color: Colors.red),
+    Container(color: Colors.green),
+    Container(color: Colors.blue)
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,11 +32,25 @@ class _HomeState extends State<Home> {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'Let\'s get cooking 👩‍🍳',
-          style: Theme.of(context).textTheme.headline1,
-        ),
+      body: pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+        onTap: _onItemTapped,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_giftcard),
+            label: 'Card',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_giftcard),
+            label: 'Card2',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_giftcard),
+            label: 'Card3',
+          ),
+        ],
       ),
     );
   }
