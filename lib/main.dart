@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'fooderlich_theme.dart';
+import 'home.dart';
 
 void main() {
   runApp(
@@ -16,21 +17,7 @@ class Fooderlich extends StatelessWidget {
     return MaterialApp(
       title: 'Fooderlich',
       theme: theme,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Fooderlich',
-            style: theme.textTheme.headline6,
-          ),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Text(
-            'Let\'s get cooking 👩‍🍳',
-            style: theme.textTheme.headline1,
-          ),
-        ),
-      ),
+      home: const Home(),
     );
   }
 }
